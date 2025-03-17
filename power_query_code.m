@@ -1,0 +1,52 @@
+let
+ Źródło = Excel.Workbook(File.Contents("/Users/mac/Downloads/portfolio1.xlsx"),
+null, true),
+ #"Nawigacja 1" = Źródło{[Item = "Sheet1", Kind = "Sheet"]}[Data],
+ #"Nagłówki o podwyższonym poziomie" = Table.PromoteHeaders(#"Nawigacja 1",
+[PromoteAllScalars = true]),
+ #"Zmieniono typ kolumny" = Table.TransformColumnTypes(#"Nagłówki o podwyższonym
+poziomie", {{"Order_ID", Int64.Type}, {"Date", type date}, {"Customer_ID",
+Int64.Type}, {"Product", type text}, {"Category", type text}, {"Quantity",
+Int64.Type}, {"Unit_Price", Int64.Type}, {"Total_Sales", type number}, {"Discount",
+Int64.Type}, {"Sales_Rep", type text}}, "pl"),
+ #"Usunięto duplikaty" = Table.Distinct(#"Zmieniono typ kolumny", {"Order_ID"}),
+ #"Zamienione błędy" = Table.ReplaceErrorValues(#"Usunięto duplikaty",
+{{"Customer_ID", 0}}),
+ #"Zamieniono wartość" = Table.ReplaceValue(#"Zamienione błędy", null, 000,
+Replacer.ReplaceValue, {"Customer_ID"}),
+ #"Zamieniono wartość 1" = Table.ReplaceValue(#"Zamieniono wartość", "???",
+"Laptop", Replacer.ReplaceText, {"Product"}),
+ #"Zamieniono wartość 2" = Table.ReplaceValue(#"Zamieniono wartość 1", "Unknown",
+"Akcesoria", Replacer.ReplaceText, {"Category"}),
+ #"Zmieniono typ kolumny 1" = Table.TransformColumnTypes(#"Zamieniono wartość 2",
+{{"Unit_Price", type text}}),
+ #"Zamieniono wartość 3" = Table.ReplaceValue(#"Zmieniono typ kolumny 1", "-", "",
+Replacer.ReplaceText, {"Unit_Price"}),
+ #"Zmieniono typ kolumny 2" = Table.TransformColumnTypes(#"Zamieniono wartość 3",
+{{"Unit_Price", Currency.Type}}),
+ #"Zamieniono wartość 4" = Table.ReplaceValue(#"Zmieniono typ kolumny 2", null, 0,
+Replacer.ReplaceValue, {"Discount"}),
+ #"Zmieniono typ kolumny 3" = Table.TransformColumnTypes(#"Zamieniono wartość 4",
+{{"Total_Sales", type text}}),
+ #"Zamieniono wartość 5" = Table.ReplaceValue(#"Zmieniono typ kolumny 3", "-", "",
+Replacer.ReplaceText, {"Total_Sales"}),
+ #"Zmieniono typ kolumny 4" = Table.TransformColumnTypes(#"Zamieniono wartość 5",
+{{"Total_Sales", type number}}),
+ #"Usunięto kolumny" = Table.RemoveColumns(#"Zmieniono typ kolumny 4",
+{"Total_Sales"}),
+ #"Kolumna używana podczas dzielenia" = Table.TransformColumns(#"Usunięto
+kolumny", {{"Discount", each _ / 100, type number}}),
+ #"Zmieniono typ kolumny 5" = Table.TransformColumnTypes(#"Kolumna używana podczas
+dzielenia", {{"Discount", Percentage.Type}}),
+ #"Dodano niestandardowe" = Table.TransformColumnTypes(Table.AddColumn(#"Zmieniono
+typ kolumny 5", "Total_Order", each ([Quantity]*[Unit_Price])-
+([Quantity]*[Unit_Price]*[Discount])), {{"Total_Order", Currency.Type}}),
+ #"Zmieniono kolejność kolumn" = Table.ReorderColumns(#"Dodano niestandardowe",
+{"Order_ID", "Date", "Customer_ID", "Product", "Category", "Quantity",
+"Unit_Price", "Total_Order", "Discount", "Sales_Rep"}),
+ #"Zamieniono wartość 6" = Table.ReplaceValue(#"Zmieniono kolejność kolumn",
+"nan", "Unknown", Replacer.ReplaceText, {"Sales_Rep"}),
+ #"Zmieniono nazwy kolumn" = Table.RenameColumns(#"Zamieniono wartość 6",
+{{"Sales_Rep", "Customer_Name"}})
+in
+ #"Zmieniono nazwy kolumn"
