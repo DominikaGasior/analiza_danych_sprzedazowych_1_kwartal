@@ -1,7 +1,7 @@
 # Analiza danych sprzedażowych za 1 kwartał – Dashboard w Excel
 
 ## 🖥 Podgląd Dashboardu
-![Demo Dashboardu]("")
+![Demo Dashboardu](https://github.com/DominikaGasior/analiza_danych_sprzedazowych_1_kwartal/blob/15256b64881941389173fdc4cb31c80209e4f097/portfolio.gif)
 
 ## 📌 Opis projektu
 Celem tej analizy było **sprawdzenie poprawności danych**, analiza oraz  
@@ -54,7 +54,7 @@ W trakcie przygotowywania danych:
 - Sprzedaż spadała w kolejnych miesiącach – możliwe efekty sezonowości.  
 - Warto przeprowadzić **analizę sezonowości**, aby lepiej zrozumieć przyczyny najwyższej sprzedaży w styczniu.  
 - Można wdrożyć **kampanie promocyjne** w lutym i marcu, aby zwiększyć sprzedaż w słabszych miesiącach.  
-- **Programy lojalnościowe** lub dodatkowe rabaty dla klientów z wysokimi zamówieniami mogą zwiększyć średnią wartość koszyka.  
+- Wprowadzenie programów lojalnościowych lub dodatkowych rabatów dla klientów z wysokimi zamówieniami mogłoby zwiększyć średnią wartość zamówień.  
 - Analiza sprzedaży na **poziomie regionów** mogłaby ujawnić dodatkowe wzorce i rynki do ekspansji.  
 - Warto **porównać dane z poprzednimi latami**, żeby ocenić długoterminowe trendy sprzedaży.
 
