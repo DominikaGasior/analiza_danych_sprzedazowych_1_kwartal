@@ -1,4 +1,4 @@
-# Analiza danych sprzedażowych za 1 kwartał – Dashboard w Excel
+# 📊 Analiza danych sprzedażowych za 1 kwartał – Dashboard w Excel
 
 ## 🖥 Podgląd Dashboardu
 ![Demo Dashboardu](https://github.com/DominikaGasior/analiza_danych_sprzedazowych_1_kwartal/blob/15256b64881941389173fdc4cb31c80209e4f097/portfolio.gif)
@@ -21,13 +21,7 @@ błędnych wartości), a następnie wykorzystałam do stworzenia czytelnego
 raportu prezentującego m.in. **łączny przychód**, **liczbę zamówień**, 
 sprzedaż w podziale na **kategorie produktu** oraz **miesiąc**.
 
----
-
-## 📂 Spis treści
-1. [Użyte narzędzia](#-użyte-narzędzia)  
-2. [Czyszczenie danych w Power Query](#-czyszczenie-danych-w-power-query)  
-3. [Wnioski i rekomendacje](#-wnioski-i-rekomendacje)  
-4. [Kod Power Query](#-kod-power-query)  
+Dodatkowo **plik Excel** został podzielony na poszczególne **etapy realizacji projektu** (poszczególne arkusze), dzięki czemu można prześledzić cały proces od **danych surowych**, poprzez **oczyszczanie i analizę**, aż po **finalny dashboard**.
 
 ---
 
