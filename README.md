@@ -1,7 +1,7 @@
 # 📊 Analiza danych sprzedażowych za 1 kwartał – Dashboard w Excel
 
 ## 🖥 Podgląd Dashboardu
-![Demo Dashboardu](https://github.com/DominikaGasior/analiza_danych_sprzedazowych_1_kwartal/blob/15256b64881941389173fdc4cb31c80209e4f097/portfolio.gif)
+![Demo Dashboardu](portfolio.gif)
 
 ## 📌 Opis projektu
 Celem tej analizy było **sprawdzenie poprawności danych**, analiza oraz  
